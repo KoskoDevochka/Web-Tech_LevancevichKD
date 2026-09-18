@@ -1,0 +1,72 @@
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 15px 0 30px;
+}
+
+.dish {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    background-color: #ffffff;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    border: 2px solid transparent
+}
+
+.dish:hover{
+    border: 2px solid rgb(230, 93, 218);
+}
+
+.dish img{
+    width: 100%;
+    border-radius: 35px;
+}
+
+.dish .price{
+    font-size: 26px;
+    margin-top: 15px;
+}
+ 
+.dish .name{
+    font-size: 24px;
+}
+ 
+.dish .weight{
+    color: gray;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.dish button{
+    margin-top: 10px;
+    background-color: #f1eee9;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Didact Gothic";
+    font-size: 18px;
+}
+
+.dish:hover button{
+    background-color: rgb(204, 204, 204);
+    color: white;
+}
+
+@media (max-width: 800px){
+    .dishes{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px){
+    h2{
+        text-align: center;
+    }
+    .dishes{
+        grid-template-columns: 1fr;
+    }
+}
