@@ -60,11 +60,21 @@
     .dishes{
         grid-template-columns: repeat(2, 1fr);
     }
+    nav{
+        justify-content: space-between;
+    }
 }
 
 @media (max-width: 600px){
+    h1{
+        text-align: center;
+    }
     h2{
         text-align: center;
+    }
+    nav{
+        flex-direction: column;
+        align-items: center;
     }
     .dishes{
         grid-template-columns: 1fr;
