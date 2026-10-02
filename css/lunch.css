@@ -158,3 +158,26 @@ input[type="radio"] + label{
 .form-buttons button:hover{
     background-color: #e7e7e7;
 }
+
+.order-item{
+    margin: 15px 0;
+}
+
+.order-item .order-category{
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.order-item .order-value{
+    font-size: 18px;
+}
+
+.order-total{
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.order-total .order-total-title{
+    font-weight: 600;
+}

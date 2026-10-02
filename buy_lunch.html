@@ -24,89 +24,17 @@
     <main class="container">
         <section>
             <h2>Выберите суп</h2>
-            <div class="dishes">
-                <div class="dish">
-                    <img src="images/chicken_soup.png" alt="Куриный суп с лапшой">
-                    <p class="price">180 ₽</p>
-                    <p class="name">Куриный суп с лапшой</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/borsch.png" alt="Борщ с говядиной">
-                    <p class="price">270 ₽</p>
-                    <p class="name">Борщ с говядиной</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/pumpkin_soup.png" alt="Тыквенный крем-суп">
-                    <p class="price">210 ₽</p>
-                    <p class="name">Тыквенный крем-суп</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes" data-category="soup"></div>
         </section>
 
         <section>
             <h2>Выберите главное блюдо</h2>
-            <div class="dishes">
-                <div class="dish">
-                    <img src="images/grechka_beef.png" alt="Гречка с говядиной">
-                    <p class="price">260 ₽</p>
-                    <p class="name">Гречка с говядиной</p>
-                    <p class="weight">250 г</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/bolognese_pumpkin.png" alt="Паста Болоньезе с тыквой">
-                    <p class="price">270 ₽</p>
-                    <p class="name">Паста Болоньезе с тыквой</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/udon.png" alt="Удон с курицей терияки">
-                    <p class="price">475 ₽</p>
-                    <p class="name">Удон с курицей терияки</p>
-                    <p class="weight">400 г</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes" data-category="main"></div>
         </section>
         
         <section>
             <h2>Выберите напиток</h2>
-            <div class="dishes">
-                <div class="dish">
-                    <img src="images/compot.png" alt="Компот из сухофруктов">
-                    <p class="price">90 ₽</p>
-                    <p class="name">Компот из сухофруктов</p>
-                    <p class="weight">250 мл</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/mors.png" alt="Морс клюквенный">
-                    <p class="price">140 ₽</p>
-                    <p class="name">Морс клюквенный</p>
-                    <p class="weight">500 мл</p>
-                    <button>Добавить</button>
-                </div>
-
-                <div class="dish">
-                    <img src="images/smoothie.png" alt="Смузи киви-яблоко">
-                    <p class="price">115 ₽</p>
-                    <p class="name">Смузи киви-яблоко</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes" data-category="drink"></div>
         </section>
     </main>
 
@@ -117,29 +45,27 @@
             <div class="order-block">
                 <h3>Ваш заказ</h3>
 
-                <label for="soup">Суп</label>
-                <select id="soup" name="soup" required>
-                    <option value="">-- Выберите суп --</option>
-                    <option value="chicken_soup">Куриный суп с лапшой</option>
-                    <option value="borsch">Борщ с говядиной</option>
-                    <option value="pumpkin_soup">Тыквенный крем-суп</option>
-                </select>
+                <p id="nothing-selected">Ничего не выбрано</p>
 
-                <label for="main_dish">Главное блюдо</label>
-                <select id="main_dish" name="main_dish" required>
-                    <option value="">-- Выберите главное блюдо --</option>
-                    <option value="grechka_beef">Гречка с говядиной</option>
-                    <option value="bolognese_pumpkin">Паста Болоньезе с тыквой</option>
-                    <option value="udon">Удон с курицей терияки</option>
-                </select>
+                <div class="order-item" id="order-soup" hidden>
+                    <span class="order-category">Суп</span>
+                    <span class="order-value">Блюдо не выбрано</span>
+                </div>
 
-                <label for="drink">Напиток</label>
-                <select id="drink" name="drink" required>
-                    <option value="">-- Выберите напиток --</option>
-                    <option value="compot">Компот из сухофруктов</option>
-                    <option value="mors">Морс клюквенный</option>
-                    <option value="smoothie">Смузи киви-яблоко</option>
-                </select>
+                <div class="order-item" id="order-main" hidden>
+                    <span class="order-category">Главное блюдо</span>
+                    <span class="order-value">Блюдо не выбрано</span>
+                </div>
+
+                <div class="order-item" id="order-drink" hidden>
+                    <span class="order-category">Напиток</span>
+                    <span class="order-value">Напиток не выбран</span>
+                </div>
+
+                <div class="order-total" id="order-total" hidden>
+                    <span class="order-total-title">Стоимость заказа</span><br>
+                    <span id="order-total-price">0 ₽</span>
+                </div>
 
                 <label for="comment">Комментарии к заказу</label>
                 <textarea id="comment" name="comment"></textarea>
@@ -186,5 +112,8 @@
     <footer id="id_footer">
         <p class="footer_text">Позвонить нам:<a href="tel:+72281895267" class="footer_link">+7(228)189-52-67</a></p>
     </footer>
+    <script src="js/dishes.js"></script>
+    <script src="js/display.js"></script>
+    <script src="js/order.js"></script>
 </body>
 </html>
