@@ -1,4 +1,4 @@
-const selected = { soup: null, main: null, drink: null };
+const selected = { soup: null, main: null, salad: null, drink: null, dessert: null };
 
 const emptyText = document.getElementById('nothing-selected');
 const totalBlock = document.getElementById('order-total');
@@ -7,13 +7,17 @@ const totalPrice = document.getElementById('order-total-price');
 const emptyMessages = {
     soup: 'Блюдо не выбрано',
     main: 'Блюдо не выбрано',
-    drink: 'Напиток не выбран'
+    salad: 'Блюдо не выбрано',
+    drink: 'Напиток не выбран',
+    dessert: 'Блюдо не выбрано'
 };
 
 const blocks = {
     soup: document.getElementById('order-soup'),
     main: document.getElementById('order-main'),
-    drink: document.getElementById('order-drink')
+    salad: document.getElementById('order-salad'),
+    drink: document.getElementById('order-drink'),
+    dessert: document.getElementById('order-dessert')
 };
 
 function updateOrder() {
@@ -53,9 +57,9 @@ document.addEventListener('click', function (event) {
 });
 
 document.querySelector('.order-form').addEventListener('reset', function () {
-    selected.soup = null;
-    selected.main = null;
-    selected.drink = null;
+    for (const category in selected) {
+        selected[category] = null;
+    }
 
     emptyText.hidden = false;
     totalBlock.hidden = true;

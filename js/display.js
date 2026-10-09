@@ -30,7 +30,21 @@ dishes.sort(function (a, b) {
     return a.name.localeCompare(b.name, 'ru');
 });
 
-dishes.forEach(function (dish) {
-    const container = document.querySelector('.dishes[data-category="' + dish.category + '"]');
-    container.append(createDishCard(dish));
+function renderDishes(category, kind) {
+    const container = document.querySelector('.dishes[data-category="' + category + '"]');
+    container.innerHTML = '';
+
+    dishes
+        .filter(function (dish) {
+            return dish.category === category && (!kind || dish.kind === kind);
+        })
+        .forEach(function (dish) {
+            container.append(createDishCard(dish));
+        });
+}
+
+const categories = ['soup', 'main', 'salad', 'drink', 'dessert'];
+
+categories.forEach(function (category) {
+    renderDishes(category);
 });
