@@ -26,10 +26,6 @@ function createDishCard(dish) {
     return card;
 }
 
-dishes.sort(function (a, b) {
-    return a.name.localeCompare(b.name, 'ru');
-});
-
 function renderDishes(category, kind) {
     const container = document.querySelector('.dishes[data-category="' + category + '"]');
     container.innerHTML = '';
@@ -45,6 +41,22 @@ function renderDishes(category, kind) {
 
 const categories = ['soup', 'main', 'salad', 'drink', 'dessert'];
 
-categories.forEach(function (category) {
-    renderDishes(category);
-});
+async function init() {
+    try {
+        await loadDishes();
+    } catch (error) {
+        console.error(error);
+        alert('Не удалось загрузить блюда. Попробуйте обновить страницу.');
+        return;
+    }
+
+    dishes.sort(function (a, b) {
+        return a.name.localeCompare(b.name, 'ru');
+    });
+
+    categories.forEach(function (category) {
+        renderDishes(category);
+    });
+}
+
+init();
