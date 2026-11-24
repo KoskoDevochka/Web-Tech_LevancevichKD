@@ -1,46 +1,29 @@
-const selected = { soup: null, main: null, salad: null, drink: null, dessert: null };
+const panel = document.getElementById('order-panel');
+const panelTotal = document.getElementById('order-panel-total');
+const panelLink = document.getElementById('order-panel-link');
 
-const emptyText = document.getElementById('nothing-selected');
-const totalBlock = document.getElementById('order-total');
-const totalPrice = document.getElementById('order-total-price');
+function updatePanel() {
+    const hasAny = categories.some(function (category) {
+        return selected[category] !== null;
+    });
 
-const emptyMessages = {
-    soup: 'Блюдо не выбрано',
-    main: 'Блюдо не выбрано',
-    salad: 'Блюдо не выбрано',
-    drink: 'Напиток не выбран',
-    dessert: 'Блюдо не выбрано'
-};
+    panel.hidden = !hasAny;
+    panelTotal.textContent = getTotal() + ' ₽';
 
-const blocks = {
-    soup: document.getElementById('order-soup'),
-    main: document.getElementById('order-main'),
-    salad: document.getElementById('order-salad'),
-    drink: document.getElementById('order-drink'),
-    dessert: document.getElementById('order-dessert')
-};
+    // ссылка доступна только если состав подходит под одно из комбо
+    const ok = checkOrder() === null;
+    panelLink.classList.toggle('disabled', !ok);
+    panelLink.setAttribute('aria-disabled', ok ? 'false' : 'true');
+}
 
-function updateOrder() {
-    emptyText.hidden = true;
-    totalBlock.hidden = false;
-
-    let total = 0;
-
-    for (const category in selected) {
-        const dish = selected[category];
-        const valueEl = blocks[category].querySelector('.order-value');
-
-        blocks[category].hidden = false;
-
-        if (dish) {
-            valueEl.textContent = dish.name + ' ' + dish.price + ' ₽';
-            total = total + dish.price;
-        } else {
-            valueEl.textContent = emptyMessages[category];
-        }
-    }
-
-    totalPrice.textContent = total + ' ₽';
+function highlightSelected() {
+    document.querySelectorAll('.dish').forEach(function (card) {
+        const keyword = card.getAttribute('data-dish');
+        const dish = dishes.find(function (d) {
+            return d.keyword === keyword;
+        });
+        card.classList.toggle('selected', selected[dish.category] === dish);
+    });
 }
 
 document.addEventListener('click', function (event) {
@@ -53,17 +36,13 @@ document.addEventListener('click', function (event) {
     });
 
     selected[dish.category] = dish;
-    updateOrder();
+    saveSelected();
+    highlightSelected();
+    updatePanel();
 });
 
-document.querySelector('.order-form').addEventListener('reset', function () {
-    for (const category in selected) {
-        selected[category] = null;
-    }
-
-    emptyText.hidden = false;
-    totalBlock.hidden = true;
-    for (const category in blocks) {
-        blocks[category].hidden = true;
+panelLink.addEventListener('click', function (event) {
+    if (panelLink.classList.contains('disabled')) {
+        event.preventDefault();
     }
 });

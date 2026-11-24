@@ -305,3 +305,62 @@ input[type="radio"] + label{
     color: white;
     border-color: rgb(230, 93, 218);
 }
+
+/* ===== ДОБАВИТЬ В КОНЕЦ lunch.css ===== */
+
+/* выбранное блюдо */
+.dish.selected{
+    border: 2px solid rgb(230, 93, 218);
+}
+
+/* панель перехода к оформлению */
+.order-panel{
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px 20px 0 0;
+}
+
+.order-panel[hidden]{
+    display: none;
+}
+
+.order-panel-total{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.order-panel a{
+    padding: 10px 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.order-panel a:hover{
+    background-color: rgb(230, 93, 218);
+    border-color: rgb(230, 93, 218);
+    color: white;
+}
+
+.order-panel a.disabled{
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px){
+    .order-panel{
+        flex-direction: column;
+        gap: 10px;
+    }
+}

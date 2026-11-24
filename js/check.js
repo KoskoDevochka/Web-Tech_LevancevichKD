@@ -61,12 +61,3 @@ function showNotification(text) {
     overlay.append(box);
     document.body.append(overlay);
 }
-
-document.querySelector('.order-form').addEventListener('submit', function (event) {
-    const message = checkOrder();
-
-    if (message !== null) {
-        event.preventDefault();
-        showNotification(message);
-    }
-});
