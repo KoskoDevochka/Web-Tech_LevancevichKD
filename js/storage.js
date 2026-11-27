@@ -1,10 +1,10 @@
 const STORAGE_KEY = 'selectedDishes';
 const categories = ['soup', 'main', 'salad', 'drink', 'dessert'];
 
-// selected[category] = объект блюда (или null)
+//selected[category] = объект блюда (или null)
 const selected = { soup: null, main: null, salad: null, drink: null, dessert: null };
 
-// в localStorage хранятся только keyword'ы: {"soup":"borsch","main":null,...}
+//в localStorage хранятся только keyword'ы
 function saveSelected() {
     const data = {};
     categories.forEach(function (category) {
@@ -13,7 +13,6 @@ function saveSelected() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
-// вызывать ПОСЛЕ loadDishes(), когда массив dishes уже заполнен
 function restoreSelected() {
     let data = {};
     try {

@@ -10,7 +10,7 @@ function updatePanel() {
     panel.hidden = !hasAny;
     panelTotal.textContent = getTotal() + ' ₽';
 
-    // ссылка доступна только если состав подходит под одно из комбо
+    //ссылка доступна только если состав подходит под одно из комбо
     const ok = checkOrder() === null;
     panelLink.classList.toggle('disabled', !ok);
     panelLink.setAttribute('aria-disabled', ok ? 'false' : 'true');
